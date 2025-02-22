@@ -16,8 +16,6 @@ public class Main {
     public static void main(String[] args) {
 
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
-        EntityManager em = JPAUtil.getEntityManager();
-        AlunoDao dao = new AlunoDao(em);
 
         int opcao;
         do {
