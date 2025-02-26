@@ -32,4 +32,12 @@ public class AlunoDao {
         return em.createQuery(jpql, Aluno.class).setParameter(1,nome).getSingleResult();
     }
 
+    public boolean existeAlunoComNome(String nome) {
+        String jpql = "SELECT COUNT(a) FROM Aluno a WHERE a.nome = :nome";
+        Long count = em.createQuery(jpql, Long.class)
+                .setParameter("nome", nome)
+                .getSingleResult();
+        return count > 0;
+    }
+
 }

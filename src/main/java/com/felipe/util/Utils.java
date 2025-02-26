@@ -14,7 +14,7 @@ public class Utils {
 
         if (alunos.isEmpty()) throw new NoSuchElementException();
 
-        System.out.println("Exibindo todos os alunos: ");
+        System.out.println("\nExibindo todos os alunos: \n");
 
         for(Aluno aluno : alunos) {
             System.out.printf("Nome: %s \n", aluno.getNome());
@@ -53,6 +53,7 @@ public class Utils {
             try {
                 System.out.print(mensagem);
                 nota = sc.nextBigDecimal();
+                sc.nextLine();
                 entradaValida = true;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, digite um número válido para a nota.");

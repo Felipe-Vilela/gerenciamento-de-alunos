@@ -236,3 +236,9 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Felipe/
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 39 more
+2025-02-25 22:50:08.664736-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]slect * from alunos"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+slect * from alunos [42001-232]
+2025-02-25 23:06:05.507816-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "delete [*]* from alunos"; expected "identifier"; SQL statement:
+delete * from alunos [42001-232]

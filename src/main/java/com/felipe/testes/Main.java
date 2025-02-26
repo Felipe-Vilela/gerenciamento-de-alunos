@@ -19,7 +19,7 @@ public class Main {
 
         int opcao;
         do {
-            System.out.println("** GERENCIAMENTO DE ALUNOS **");
+            System.out.println("\n\n** GERENCIAMENTO DE ALUNOS **");
             System.out.println("1 - Cadastrar aluno");
             System.out.println("2 - Excluir aluno");
             System.out.println("3 - Alterar aluno");
@@ -46,10 +46,16 @@ public class Main {
         EntityManager em = JPAUtil.getEntityManager();
         AlunoDao dao = new AlunoDao(em);
 
-        System.out.println("CADASTRO DE ALUNOS");
+        System.out.println("\nCADASTRO DE ALUNOS");
 
         Aluno aluno = new Aluno();
         Utils.digitarDadosAlunos(aluno);
+
+        if(dao.existeAlunoComNome(aluno.getNome())){
+            System.out.printf("Não foi possível cadastrar, aluno já cadastrado com o nome: %s \n\n", aluno.getNome());
+            em.close();
+            return;
+        }
 
         em.getTransaction().begin();
         dao.cadastrar(aluno);
@@ -65,7 +71,7 @@ public class Main {
 
         try (em) {
             AlunoDao dao = new AlunoDao(em);
-            System.out.println("EXCLUIR ALUNO:");
+            System.out.println("\nEXCLUIR ALUNO:");
             System.out.println("Digite o nome:");
             String nome = sc.nextLine();
 
@@ -77,7 +83,7 @@ public class Main {
 
             System.out.println("Aluno removido com sucesso!");
         } catch (NoResultException e) {
-            System.out.println("\n Aluno não encontado!");
+            System.out.println("Aluno não encontado!");
         }
     }
 
@@ -86,12 +92,12 @@ public class Main {
 
         try (em) {
             AlunoDao dao = new AlunoDao(em);
-            System.out.println("ALTERAR ALUNO:");
+            System.out.println("\nALTERAR ALUNO:");
             System.out.println("Digite o nome:");
             String nome = sc.nextLine();
             Aluno aluno = dao.buscarPeloNome(nome);
             Utils.listarDadosAluno(aluno);
-            System.out.println("NOVOS DADOS:");
+            System.out.println("\nNOVOS DADOS:");
             Utils.digitarDadosAlunos(aluno);
 
             em.getTransaction().begin();
@@ -112,7 +118,7 @@ public class Main {
 
         try (em) {
             AlunoDao dao = new AlunoDao(em);
-            System.out.println("CONSULTAR ALUNO:");
+            System.out.println("\nCONSULTAR ALUNO:");
             System.out.println("Digite o nome:");
             String nome = sc.nextLine();
 
