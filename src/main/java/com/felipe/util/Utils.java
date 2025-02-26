@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Utils {
 
-    private static final Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void listarTodosAlunos(List<Aluno> alunos){
 
@@ -54,9 +54,14 @@ public class Utils {
                 System.out.print(mensagem);
                 nota = sc.nextBigDecimal();
                 sc.nextLine();
+
+                if (nota.compareTo(BigDecimal.ZERO) < 0 || nota.compareTo(BigDecimal.TEN) > 0) {
+                    throw new IllegalArgumentException();
+                }
+
                 entradaValida = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Entrada inválida. Por favor, digite um número válido para a nota.");
+            } catch (InputMismatchException | IllegalArgumentException e) {
+                System.out.println("Nota com formato inválido ou fora do intervalo. Deve ser entre 0 e 10.Digite novamente... ");
                 sc.nextLine();
             }
         }

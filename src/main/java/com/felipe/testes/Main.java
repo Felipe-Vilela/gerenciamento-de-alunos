@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.logging.Level;
 
 public class Main {
-    private static final Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
